@@ -1,5 +1,5 @@
 import React from 'react';
-import { TrendingDown, Leaf, IndianRupee, Ship, ArrowRight, Zap, Clock, ShieldCheck } from 'lucide-react';
+import { TrendingDown, Leaf, IndianRupee, Ship, ArrowRight, Zap } from 'lucide-react';
 import { VoyageInput } from '../types';
 
 interface KpiOverviewProps {
@@ -19,9 +19,7 @@ export const KpiOverview: React.FC<KpiOverviewProps> = ({
       value: '12.8%',
       subtitle: 'Fleet average reduction',
       icon: TrendingDown,
-      color: 'from-emerald-500/20 to-teal-500/10',
-      borderColor: 'border-emerald-500/30',
-      textColor: 'text-emerald-400',
+      textColor: 'text-teal-400',
       badge: '+2.1% this month'
     },
     {
@@ -29,9 +27,7 @@ export const KpiOverview: React.FC<KpiOverviewProps> = ({
       value: '18.4%',
       subtitle: 'Net emissions avoided',
       icon: Leaf,
-      color: 'from-teal-500/20 to-cyan-500/10',
-      borderColor: 'border-teal-500/30',
-      textColor: 'text-teal-300',
+      textColor: 'text-teal-400',
       badge: 'IMO 2030 Aligned'
     },
     {
@@ -39,19 +35,15 @@ export const KpiOverview: React.FC<KpiOverviewProps> = ({
       value: '₹2.4L',
       subtitle: 'Avg savings per voyage',
       icon: IndianRupee,
-      color: 'from-sky-500/20 to-indigo-500/10',
-      borderColor: 'border-sky-500/30',
-      textColor: 'text-sky-300',
+      textColor: 'text-slate-100',
       badge: '₹3.1 Cr cumulative'
     },
     {
       title: 'Voyages Optimized',
       value: '128',
-      subtitle: 'Completed quantum plans',
+      subtitle: 'Completed voyage plans',
       icon: Ship,
-      color: 'from-blue-500/20 to-navy-700/20',
-      borderColor: 'border-blue-500/30',
-      textColor: 'text-blue-300',
+      textColor: 'text-slate-100',
       badge: '99.2% on-time ETA'
     }
   ];
@@ -65,91 +57,84 @@ export const KpiOverview: React.FC<KpiOverviewProps> = ({
           return (
             <div
               key={idx}
-              className={`relative overflow-hidden rounded-2xl bg-gradient-to-b ${kpi.color} bg-[#0B132B]/80 backdrop-blur-md p-5 border ${kpi.borderColor} transition-all duration-300 hover:scale-[1.02] hover:shadow-lg`}
+              className="rounded-lg bg-slate-900 p-4 border border-slate-800 transition-colors hover:border-slate-700"
             >
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-xs font-medium text-slate-400">
                   {kpi.title}
                 </span>
-                <div className="p-2 rounded-lg bg-slate-900/60 border border-slate-700/50">
-                  <Icon className={`w-5 h-5 ${kpi.textColor}`} />
+                <div className="p-1.5 rounded bg-slate-800 border border-slate-700 text-slate-400">
+                  <Icon className="w-4 h-4" />
                 </div>
               </div>
               <div className="flex items-baseline justify-between">
-                <span className={`text-3xl font-extrabold font-mono tracking-tight ${kpi.textColor}`}>
+                <span className={`text-2xl font-bold font-mono ${kpi.textColor}`}>
                   {kpi.value}
                 </span>
-                <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-slate-900/80 text-slate-300 border border-slate-700/50">
+                <span className="text-[11px] text-slate-400 bg-slate-800 px-2 py-0.5 rounded border border-slate-700/60">
                   {kpi.badge}
                 </span>
               </div>
-              <p className="text-xs text-slate-400 mt-2 font-medium">{kpi.subtitle}</p>
+              <p className="text-xs text-slate-400 mt-1.5">{kpi.subtitle}</p>
             </div>
           );
         })}
       </div>
 
       {/* Active Voyage Banner & Quick Action Card */}
-      <div className="relative rounded-2xl overflow-hidden border border-sky-500/30 bg-gradient-to-r from-[#0B132B] via-[#0F1D40] to-[#0A2239] p-6 shadow-xl">
-        <div className="absolute -right-10 -bottom-10 w-72 h-72 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -left-10 -top-10 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-          <div className="space-y-3">
+      <div className="rounded-lg border border-slate-800 bg-slate-900 p-5">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
+          <div className="space-y-2.5">
             <div className="flex items-center space-x-2">
-              <span className="flex h-2.5 w-2.5 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-              </span>
-              <span className="text-xs font-semibold uppercase tracking-wider text-emerald-400 font-mono">
+              <span className="text-xs font-semibold uppercase tracking-wide text-teal-400 font-mono">
                 Active Voyage Monitoring
               </span>
               <span className="text-xs text-slate-400">• Vessel ID: #IN-CT-9042</span>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3">
-              <h3 className="text-2xl font-bold text-white flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2.5">
+              <h3 className="text-xl font-bold text-white flex items-center gap-2">
                 <span>Mumbai (JNPT)</span>
-                <ArrowRight className="w-5 h-5 text-sky-400" />
+                <ArrowRight className="w-4 h-4 text-slate-400" />
                 <span>Singapore</span>
               </h3>
-              <span className="px-2.5 py-1 rounded-md text-xs font-semibold bg-sky-950/80 text-sky-300 border border-sky-500/30">
-                3,200 Nautical Miles
+              <span className="px-2 py-0.5 rounded text-xs font-medium bg-slate-800 text-slate-300 border border-slate-700">
+                3,200 NM
               </span>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1 text-xs">
-              <div className="bg-slate-900/60 rounded-lg p-2.5 border border-slate-800">
-                <span className="text-slate-400 block">Vessel & Cargo</span>
-                <span className="font-semibold text-slate-200">{currentVoyage.vesselType} ({currentVoyage.cargoLoadPct}% Load)</span>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1 text-xs">
+              <div className="bg-slate-800/60 rounded p-2 border border-slate-700/60">
+                <span className="text-slate-400 block text-[11px]">Vessel & Cargo</span>
+                <span className="font-semibold text-slate-200">{currentVoyage.vesselType} ({currentVoyage.cargoLoadPct}%)</span>
               </div>
-              <div className="bg-slate-900/60 rounded-lg p-2.5 border border-slate-800">
-                <span className="text-slate-400 block">Current Bunker</span>
+              <div className="bg-slate-800/60 rounded p-2 border border-slate-700/60">
+                <span className="text-slate-400 block text-[11px]">Current Bunker</span>
                 <span className="font-semibold text-slate-200">{currentVoyage.fuelType} @ {currentVoyage.speedKnots} kts</span>
               </div>
-              <div className="bg-slate-900/60 rounded-lg p-2.5 border border-slate-800">
-                <span className="text-slate-400 block">Baseline CO₂</span>
-                <span className="font-semibold text-amber-300">~312.4 MT CO₂</span>
+              <div className="bg-slate-800/60 rounded p-2 border border-slate-700/60">
+                <span className="text-slate-400 block text-[11px]">Baseline CO₂</span>
+                <span className="font-semibold text-slate-200">~312.4 MT CO₂</span>
               </div>
-              <div className="bg-slate-900/60 rounded-lg p-2.5 border border-slate-800">
-                <span className="text-slate-400 block">Baseline ETA</span>
-                <span className="font-semibold text-sky-300">177.8 hrs (7.4 days)</span>
+              <div className="bg-slate-800/60 rounded p-2 border border-slate-700/60">
+                <span className="text-slate-400 block text-[11px]">Baseline ETA</span>
+                <span className="font-semibold text-slate-200">177.8 hrs (7.4 days)</span>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
+          <div className="flex flex-col sm:flex-row lg:flex-col gap-2.5 shrink-0">
             <button
               onClick={onOptimizeCurrentVoyage}
-              className="flex items-center justify-center space-x-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 via-teal-500 to-sky-500 hover:from-emerald-500 hover:via-teal-400 hover:to-sky-400 text-white font-bold text-sm shadow-lg shadow-emerald-500/25 transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0"
+              className="flex items-center justify-center space-x-1.5 px-4 py-2.5 rounded-md bg-teal-600 hover:bg-teal-500 text-white font-semibold text-xs transition-colors shadow-sm"
             >
-              <Zap className="w-5 h-5 fill-white text-white animate-pulse" />
-              <span>⚡ Optimize This Voyage</span>
+              <Zap className="w-4 h-4 fill-current" />
+              <span>Optimize This Voyage</span>
             </button>
 
             <button
               onClick={onNavigateToPrediction}
-              className="flex items-center justify-center space-x-2 px-4 py-2.5 rounded-xl bg-slate-900/70 hover:bg-slate-800 text-slate-300 hover:text-white font-medium text-xs border border-slate-700/60 transition-colors"
+              className="flex items-center justify-center space-x-1 px-3 py-2 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs border border-slate-700 transition-colors"
             >
               <span>Inspect Fuel Prediction Model</span>
               <ArrowRight className="w-3.5 h-3.5" />

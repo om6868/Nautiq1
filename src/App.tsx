@@ -7,7 +7,7 @@ import { FuelScenarioEngine } from './components/FuelScenarioEngine';
 import { FleetAnalytics } from './components/FleetAnalytics';
 import { ImpactFooter } from './components/ImpactFooter';
 import { VoyageInput } from './types';
-import { Sparkles, CheckCircle2, X } from 'lucide-react';
+import { Sparkles, X } from 'lucide-react';
 
 export function App() {
   const [activeTab, setActiveTab] = useState<string>('dashboard');
@@ -42,11 +42,11 @@ export function App() {
 
     setTimeout(() => {
       setShowDemoToast(false);
-    }, 5000);
+    }, 4000);
   };
 
   return (
-    <div className="min-h-screen bg-[#070C18] text-slate-100 flex flex-col selection:bg-emerald-500/30 selection:text-emerald-200">
+    <div className="min-h-screen bg-[#0B132B] text-slate-100 flex flex-col">
       {/* Navigation Bar */}
       <Navbar
         activeTab={activeTab}
@@ -58,16 +58,16 @@ export function App() {
       {/* Demo Mode Notification Toast */}
       {showDemoToast && (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-3">
-          <div className="flex items-center justify-between p-3.5 rounded-xl bg-gradient-to-r from-emerald-950 via-slate-900 to-sky-950 border border-emerald-500/50 shadow-lg animate-fadeIn text-xs text-emerald-200">
+          <div className="flex items-center justify-between p-3 rounded-lg bg-slate-800 border border-slate-700 text-xs text-slate-200">
             <div className="flex items-center space-x-2">
-              <Sparkles className="w-4 h-4 text-emerald-400 shrink-0" />
+              <Sparkles className="w-4 h-4 text-teal-400 shrink-0" />
               <span>
-                <strong>🎯 Demo Scenario Loaded:</strong> Mumbai → Singapore | Container Ship (82% Cargo, 18 kts, HFO). Click <strong>⚡ Optimize My Voyage</strong> below to see quantum recommendations!
+                <strong>Demo Scenario Loaded:</strong> Mumbai → Singapore | Container Ship (82% Cargo, 18 kts, HFO). Click <strong>Optimize My Voyage</strong> to view recommendations.
               </span>
             </div>
             <button
               onClick={() => setShowDemoToast(false)}
-              className="p-1 rounded text-slate-400 hover:text-white hover:bg-slate-800"
+              className="p-1 rounded text-slate-400 hover:text-white hover:bg-slate-700"
             >
               <X className="w-3.5 h-3.5" />
             </button>
@@ -79,7 +79,7 @@ export function App() {
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12">
         {/* Dynamic Tab Content */}
         {activeTab === 'dashboard' && (
-          <div className="space-y-10">
+          <div className="space-y-8">
             {/* Fleet KPIs & Active Voyage */}
             <KpiOverview
               onOptimizeCurrentVoyage={() => setActiveTab('optimizer')}

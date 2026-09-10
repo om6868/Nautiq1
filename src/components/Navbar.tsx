@@ -1,5 +1,5 @@
 import React from 'react';
-import { Anchor, Sparkles, Compass, ShieldCheck, Zap, BarChart3, Layers, Fuel } from 'lucide-react';
+import { Anchor, Sparkles, Compass, Zap, BarChart3, Fuel } from 'lucide-react';
 
 interface NavbarProps {
   activeTab: string;
@@ -23,32 +23,20 @@ export const Navbar: React.FC<NavbarProps> = ({
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-[#070C18]/90 backdrop-blur-md border-b border-sky-900/30">
+    <header className="sticky top-0 z-50 bg-[#0B132B] border-b border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Brand & Subtitle */}
-          <div className="flex items-center space-x-3 cursor-pointer" onClick={() => setActiveTab('dashboard')}>
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-sky-600 via-teal-500 to-emerald-400 p-[2px] shadow-lg shadow-sky-500/20">
-              <div className="w-full h-full bg-[#0B132B] rounded-[10px] flex items-center justify-center">
-                <Anchor className="w-6 h-6 text-emerald-400 transform -rotate-12" />
-              </div>
+        <div className="flex items-center justify-between h-16">
+          {/* Brand */}
+          <div
+            className="flex items-center space-x-2.5 cursor-pointer"
+            onClick={() => setActiveTab('dashboard')}
+          >
+            <div className="w-8 h-8 rounded-lg bg-teal-600 flex items-center justify-center text-white shadow-sm">
+              <Anchor className="w-5 h-5" />
             </div>
-            <div>
-              <div className="flex items-center space-x-2">
-                <span className="text-2xl font-black tracking-tight text-white font-mono">
-                  Nauti<span className="text-emerald-400">Q</span>
-                </span>
-                <span className="text-[11px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-950/80 text-emerald-400 border border-emerald-500/30">
-                  SIH 2026
-                </span>
-                <span className="text-xs text-slate-400 font-medium hidden sm:inline-block">
-                  by <strong className="text-slate-200">FlowState</strong>
-                </span>
-              </div>
-              <p className="text-xs text-slate-400 font-medium">
-                AI-Powered Green Fleet Optimization • <span className="text-sky-400 font-semibold">Predict. Optimize. Decarbonize.</span>
-              </p>
-            </div>
+            <span className="text-xl font-bold tracking-tight text-white font-mono">
+              Nauti<span className="text-teal-400">Q</span>
+            </span>
           </div>
 
           {/* Navigation Links */}
@@ -60,38 +48,33 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   key={item.id}
                   onClick={() => setActiveTab(item.id)}
-                  className={`flex items-center space-x-2 px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
                     isActive
-                      ? 'bg-sky-500/15 text-sky-300 border border-sky-500/30 shadow-sm'
-                      : 'text-slate-300 hover:text-white hover:bg-slate-800/50'
+                      ? 'bg-slate-800 text-teal-300 border border-slate-700'
+                      : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
                   }`}
                 >
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-sky-400' : 'text-slate-400'}`} />
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-teal-400' : 'text-slate-400'}`} />
                   <span>{item.label}</span>
                 </button>
               );
             })}
           </nav>
 
-          {/* Demo Mode Button & Problem Statement Tag */}
-          <div className="flex items-center space-x-3">
+          {/* Demo Mode Action Button */}
+          <div className="flex items-center space-x-2">
             <button
               onClick={onTriggerDemoMode}
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-300 shadow-md ${
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-md text-xs font-semibold transition-colors ${
                 isDemoActive
-                  ? 'bg-gradient-to-r from-emerald-600 to-teal-500 text-white shadow-emerald-500/25 ring-2 ring-emerald-400/50'
-                  : 'bg-gradient-to-r from-sky-600 to-emerald-600 hover:from-sky-500 hover:to-emerald-500 text-white shadow-sky-500/20'
+                  ? 'bg-teal-700 text-white border border-teal-500'
+                  : 'bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700'
               }`}
-              title="Preload polished judge benchmark scenario (Mumbai → Singapore Container Ship)"
+              title="Preload sample scenario (Mumbai → Singapore Container Ship)"
             >
-              <Sparkles className="w-4 h-4 animate-spin-slow" />
-              <span>🎯 Demo Mode</span>
+              <Sparkles className="w-3.5 h-3.5 text-teal-400" />
+              <span>Demo Mode</span>
             </button>
-
-            <div className="hidden lg:flex flex-col items-end text-right pl-2 border-l border-slate-800">
-              <span className="text-[10px] text-slate-400 font-mono">PROBLEM STATEMENT</span>
-              <span className="text-xs font-bold text-slate-200 font-mono">SIH26138</span>
-            </div>
           </div>
         </div>
       </div>
