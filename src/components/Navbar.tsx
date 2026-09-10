@@ -1,5 +1,5 @@
 import React from 'react';
-import { Anchor, Sparkles, Compass, Zap, BarChart3, Fuel } from 'lucide-react';
+import { Anchor, Sparkles, Compass, Zap, BarChart3, Fuel, Scale } from 'lucide-react';
 
 interface NavbarProps {
   activeTab: string;
@@ -20,6 +20,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: 'optimizer', label: 'Voyage Optimizer', icon: Sparkles },
     { id: 'scenarios', label: 'Fuel Scenarios', icon: Fuel },
     { id: 'analytics', label: 'Fleet Analytics', icon: BarChart3 },
+    { id: 'benchmarks', label: 'Algorithm Comparison', icon: Scale },
   ];
 
   return (

@@ -5,6 +5,7 @@ import { FuelPredictionCard } from './components/FuelPredictionCard';
 import { VoyageOptimizer } from './components/VoyageOptimizer';
 import { FuelScenarioEngine } from './components/FuelScenarioEngine';
 import { FleetAnalytics } from './components/FleetAnalytics';
+import { AlgorithmComparison } from './components/AlgorithmComparison';
 import { ImpactFooter } from './components/ImpactFooter';
 import { VoyageInput } from './types';
 import { Sparkles, X } from 'lucide-react';
@@ -123,6 +124,13 @@ export function App() {
         {activeTab === 'analytics' && (
           <FleetAnalytics
             voyageInput={voyageInput}
+          />
+        )}
+
+        {activeTab === 'benchmarks' && (
+          <AlgorithmComparison
+            voyageInput={voyageInput}
+            onGoToOptimizer={() => setActiveTab('optimizer')}
           />
         )}
 
