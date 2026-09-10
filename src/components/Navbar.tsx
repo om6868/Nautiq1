@@ -23,7 +23,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-[#0B132B] border-b border-slate-800">
+    <header className="sticky top-0 z-50 bg-white border-b border-[#D9E2DE]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Brand */}
@@ -31,11 +31,11 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="flex items-center space-x-2.5 cursor-pointer"
             onClick={() => setActiveTab('dashboard')}
           >
-            <div className="w-8 h-8 rounded-lg bg-teal-600 flex items-center justify-center text-white shadow-sm">
+            <div className="w-8 h-8 rounded-lg bg-[#258F87] flex items-center justify-center text-white shadow-sm">
               <Anchor className="w-5 h-5" />
             </div>
-            <span className="text-xl font-bold tracking-tight text-white font-mono">
-              Nauti<span className="text-teal-400">Q</span>
+            <span className="text-xl font-bold tracking-tight text-[#16324F] font-mono">
+              Nauti<span className="text-[#258F87]">Q</span>
             </span>
           </div>
 
@@ -50,11 +50,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onClick={() => setActiveTab(item.id)}
                   className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
                     isActive
-                      ? 'bg-slate-800 text-teal-300 border border-slate-700'
-                      : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+                      ? 'bg-[#EDF5F1] text-[#258F87] border border-[#D9E2DE]'
+                      : 'text-[#16324F] hover:bg-slate-50'
                   }`}
                 >
-                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-teal-400' : 'text-slate-400'}`} />
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-[#258F87]' : 'text-slate-400'}`} />
                   <span>{item.label}</span>
                 </button>
               );
@@ -67,12 +67,12 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={onTriggerDemoMode}
               className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-md text-xs font-semibold transition-colors ${
                 isDemoActive
-                  ? 'bg-teal-700 text-white border border-teal-500'
-                  : 'bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700'
+                  ? 'bg-[#258F87] text-white border border-[#258F87]'
+                  : 'bg-[#16324F] hover:bg-[#11273E] text-white'
               }`}
               title="Preload sample scenario (Mumbai → Singapore Container Ship)"
             >
-              <Sparkles className="w-3.5 h-3.5 text-teal-400" />
+              <Sparkles className="w-3.5 h-3.5 text-white" />
               <span>Demo Mode</span>
             </button>
           </div>

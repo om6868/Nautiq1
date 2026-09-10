@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, Zap, Sliders, Info } from 'lucide-react';
+import { Zap, Sliders, Info } from 'lucide-react';
 import { ALL_FUELS } from '../data/fuels';
 import { PORTS, getDistanceBetweenPorts } from '../data/ports';
 import { VESSEL_TYPES } from '../data/vessels';
@@ -59,23 +59,23 @@ export const VoyageOptimizer: React.FC<VoyageOptimizerProps> = ({
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="pb-2 border-b border-slate-800">
-        <h2 className="text-xl font-bold text-white flex items-center gap-2">
+      <div className="pb-2 border-b border-[#D9E2DE]">
+        <h2 className="text-xl font-bold text-[#16324F] flex items-center gap-2">
           <span>NautiQ Voyage Optimizer</span>
         </h2>
-        <p className="text-xs text-slate-400 mt-0.5">
+        <p className="text-xs text-[#64748B] mt-0.5">
           Quantum-inspired combinatorial solver balancing fuel cost, emissions, and schedule reliability.
         </p>
       </div>
 
       {/* Input Configuration Card */}
-      <div className="bg-slate-900 rounded-lg p-5 border border-slate-800 space-y-4">
-        <div className="flex items-center justify-between pb-2 border-b border-slate-800">
-          <span className="text-xs font-semibold uppercase tracking-wide text-slate-300 flex items-center gap-1.5">
-            <Sliders className="w-3.5 h-3.5 text-teal-400" />
+      <div className="bg-white rounded-lg p-5 border border-[#D9E2DE] shadow-sm space-y-4">
+        <div className="flex items-center justify-between pb-2 border-b border-[#D9E2DE]">
+          <span className="text-xs font-semibold uppercase tracking-wide text-[#16324F] flex items-center gap-1.5">
+            <Sliders className="w-3.5 h-3.5 text-[#258F87]" />
             <span>Voyage Input Parameters</span>
           </span>
-          <span className="text-xs text-slate-400 font-mono">
+          <span className="text-xs text-[#64748B] font-mono">
             {optimizationResult.allGeneratedCount}+ Permutations Evaluated
           </span>
         </div>
@@ -83,13 +83,13 @@ export const VoyageOptimizer: React.FC<VoyageOptimizerProps> = ({
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 text-xs">
           {/* Vessel */}
           <div>
-            <label className="block font-medium text-slate-400 mb-1">
+            <label className="block font-medium text-[#64748B] mb-1">
               Vessel
             </label>
             <select
               value={voyageInput.vesselType}
               onChange={(e) => setVoyageInput(prev => ({ ...prev, vesselType: e.target.value as any }))}
-              className="w-full bg-slate-800 border border-slate-700 rounded-md px-2.5 py-1.5 text-white focus:border-teal-500 focus:outline-none"
+              className="w-full bg-white border border-[#D9E2DE] rounded-md px-2.5 py-1.5 text-[#1F2937] focus:border-[#258F87] focus:outline-none"
             >
               {VESSEL_TYPES.map(t => (
                 <option key={t} value={t}>{t}</option>
@@ -99,13 +99,13 @@ export const VoyageOptimizer: React.FC<VoyageOptimizerProps> = ({
 
           {/* Origin Port */}
           <div>
-            <label className="block font-medium text-slate-400 mb-1">
+            <label className="block font-medium text-[#64748B] mb-1">
               Origin Port
             </label>
             <select
               value={voyageInput.originPortId}
               onChange={(e) => handlePortChange('origin', e.target.value)}
-              className="w-full bg-slate-800 border border-slate-700 rounded-md px-2.5 py-1.5 text-white focus:border-teal-500 focus:outline-none"
+              className="w-full bg-white border border-[#D9E2DE] rounded-md px-2.5 py-1.5 text-[#1F2937] focus:border-[#258F87] focus:outline-none"
             >
               {PORTS.map(p => (
                 <option key={p.id} value={p.id}>{p.name.split(' ')[0]}</option>
@@ -115,13 +115,13 @@ export const VoyageOptimizer: React.FC<VoyageOptimizerProps> = ({
 
           {/* Destination Port */}
           <div>
-            <label className="block font-medium text-slate-400 mb-1">
+            <label className="block font-medium text-[#64748B] mb-1">
               Destination Port
             </label>
             <select
               value={voyageInput.destPortId}
               onChange={(e) => handlePortChange('dest', e.target.value)}
-              className="w-full bg-slate-800 border border-slate-700 rounded-md px-2.5 py-1.5 text-white focus:border-teal-500 focus:outline-none"
+              className="w-full bg-white border border-[#D9E2DE] rounded-md px-2.5 py-1.5 text-[#1F2937] focus:border-[#258F87] focus:outline-none"
             >
               {PORTS.map(p => (
                 <option key={p.id} value={p.id}>{p.name.split(' ')[0]}</option>
@@ -131,7 +131,7 @@ export const VoyageOptimizer: React.FC<VoyageOptimizerProps> = ({
 
           {/* Cargo Load */}
           <div>
-            <label className="block font-medium text-slate-400 mb-1">
+            <label className="block font-medium text-[#64748B] mb-1">
               Cargo Load ({voyageInput.cargoLoadPct}%)
             </label>
             <input
@@ -140,13 +140,13 @@ export const VoyageOptimizer: React.FC<VoyageOptimizerProps> = ({
               max={100}
               value={voyageInput.cargoLoadPct}
               onChange={(e) => setVoyageInput(prev => ({ ...prev, cargoLoadPct: Number(e.target.value) }))}
-              className="w-full bg-slate-800 border border-slate-700 rounded-md px-2.5 py-1.5 text-white font-mono focus:border-teal-500 focus:outline-none"
+              className="w-full bg-white border border-[#D9E2DE] rounded-md px-2.5 py-1.5 text-[#1F2937] font-mono focus:border-[#258F87] focus:outline-none"
             />
           </div>
 
           {/* Current Speed */}
           <div>
-            <label className="block font-medium text-slate-400 mb-1">
+            <label className="block font-medium text-[#64748B] mb-1">
               Speed ({voyageInput.speedKnots} kts)
             </label>
             <input
@@ -156,19 +156,19 @@ export const VoyageOptimizer: React.FC<VoyageOptimizerProps> = ({
               max={24}
               value={voyageInput.speedKnots}
               onChange={(e) => setVoyageInput(prev => ({ ...prev, speedKnots: Number(e.target.value) }))}
-              className="w-full bg-slate-800 border border-slate-700 rounded-md px-2.5 py-1.5 text-white font-mono focus:border-teal-500 focus:outline-none"
+              className="w-full bg-white border border-[#D9E2DE] rounded-md px-2.5 py-1.5 text-[#1F2937] font-mono focus:border-[#258F87] focus:outline-none"
             />
           </div>
 
           {/* Current Fuel */}
           <div>
-            <label className="block font-medium text-slate-400 mb-1">
+            <label className="block font-medium text-[#64748B] mb-1">
               Current Fuel
             </label>
             <select
               value={voyageInput.fuelType}
               onChange={(e) => setVoyageInput(prev => ({ ...prev, fuelType: e.target.value as any }))}
-              className="w-full bg-slate-800 border border-slate-700 rounded-md px-2.5 py-1.5 text-white focus:border-teal-500 focus:outline-none"
+              className="w-full bg-white border border-[#D9E2DE] rounded-md px-2.5 py-1.5 text-[#1F2937] focus:border-[#258F87] focus:outline-none"
             >
               {ALL_FUELS.map(f => (
                 <option key={f} value={f}>{f}</option>
@@ -182,7 +182,7 @@ export const VoyageOptimizer: React.FC<VoyageOptimizerProps> = ({
           <button
             onClick={handleRunOptimization}
             disabled={isOptimizing}
-            className="w-full py-2.5 px-4 rounded-md bg-teal-600 hover:bg-teal-500 text-white font-semibold text-xs transition-colors flex items-center justify-center space-x-2"
+            className="w-full py-2.5 px-4 rounded-md bg-[#258F87] hover:bg-[#1E746D] text-white font-semibold text-xs transition-colors flex items-center justify-center space-x-2 shadow-sm"
           >
             <Zap className="w-4 h-4 fill-current" />
             <span>{isOptimizing ? 'Evaluating Voyage Combinations...' : 'Optimize My Voyage'}</span>
@@ -190,15 +190,15 @@ export const VoyageOptimizer: React.FC<VoyageOptimizerProps> = ({
         </div>
 
         {/* Quantum Solver Status Line */}
-        <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 pt-2 border-t border-slate-800">
+        <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-[#64748B] pt-2 border-t border-[#D9E2DE]">
           <div className="flex items-center space-x-1.5">
-            <Info className="w-3.5 h-3.5 text-slate-400" />
-            <span className="text-slate-300">Quantum-Inspired Search:</span>
+            <Info className="w-3.5 h-3.5 text-[#258F87]" />
+            <span className="text-[#16324F] font-medium">Quantum-Inspired Search:</span>
             <span>Searching 100+ possible voyage combinations across speed, route, and fuel</span>
           </div>
           <button
             onClick={() => setIsQuantumModalOpen(true)}
-            className="text-teal-400 hover:text-teal-300 font-medium underline mt-1 sm:mt-0 text-xs"
+            className="text-[#258F87] hover:text-[#1E746D] font-medium underline mt-1 sm:mt-0 text-xs"
           >
             View Technical Details
           </button>

@@ -46,7 +46,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B132B] text-slate-100 flex flex-col">
+    <div className="min-h-screen bg-[#F5F7F4] text-[#1F2937] flex flex-col">
       {/* Navigation Bar */}
       <Navbar
         activeTab={activeTab}
@@ -58,16 +58,16 @@ export function App() {
       {/* Demo Mode Notification Toast */}
       {showDemoToast && (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-3">
-          <div className="flex items-center justify-between p-3 rounded-lg bg-slate-800 border border-slate-700 text-xs text-slate-200">
+          <div className="flex items-center justify-between p-3 rounded-lg bg-white border border-[#D9E2DE] text-xs text-[#1F2937] shadow-sm">
             <div className="flex items-center space-x-2">
-              <Sparkles className="w-4 h-4 text-teal-400 shrink-0" />
+              <Sparkles className="w-4 h-4 text-[#258F87] shrink-0" />
               <span>
                 <strong>Demo Scenario Loaded:</strong> Mumbai → Singapore | Container Ship (82% Cargo, 18 kts, HFO). Click <strong>Optimize My Voyage</strong> to view recommendations.
               </span>
             </div>
             <button
               onClick={() => setShowDemoToast(false)}
-              className="p-1 rounded text-slate-400 hover:text-white hover:bg-slate-700"
+              className="p-1 rounded text-slate-400 hover:text-slate-700 hover:bg-slate-100"
             >
               <X className="w-3.5 h-3.5" />
             </button>

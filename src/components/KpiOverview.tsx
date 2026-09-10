@@ -19,7 +19,7 @@ export const KpiOverview: React.FC<KpiOverviewProps> = ({
       value: '12.8%',
       subtitle: 'Fleet average reduction',
       icon: TrendingDown,
-      textColor: 'text-teal-400',
+      textColor: 'text-[#5B8C72]',
       badge: '+2.1% this month'
     },
     {
@@ -27,7 +27,7 @@ export const KpiOverview: React.FC<KpiOverviewProps> = ({
       value: '18.4%',
       subtitle: 'Net emissions avoided',
       icon: Leaf,
-      textColor: 'text-teal-400',
+      textColor: 'text-[#5B8C72]',
       badge: 'IMO 2030 Aligned'
     },
     {
@@ -35,7 +35,7 @@ export const KpiOverview: React.FC<KpiOverviewProps> = ({
       value: '₹2.4L',
       subtitle: 'Avg savings per voyage',
       icon: IndianRupee,
-      textColor: 'text-slate-100',
+      textColor: 'text-[#16324F]',
       badge: '₹3.1 Cr cumulative'
     },
     {
@@ -43,7 +43,7 @@ export const KpiOverview: React.FC<KpiOverviewProps> = ({
       value: '128',
       subtitle: 'Completed voyage plans',
       icon: Ship,
-      textColor: 'text-slate-100',
+      textColor: 'text-[#16324F]',
       badge: '99.2% on-time ETA'
     }
   ];
@@ -57,13 +57,13 @@ export const KpiOverview: React.FC<KpiOverviewProps> = ({
           return (
             <div
               key={idx}
-              className="rounded-lg bg-slate-900 p-4 border border-slate-800 transition-colors hover:border-slate-700"
+              className="rounded-lg bg-white p-4 border border-[#D9E2DE] shadow-sm transition-colors hover:border-slate-300"
             >
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-medium text-slate-400">
+                <span className="text-xs font-medium text-[#64748B]">
                   {kpi.title}
                 </span>
-                <div className="p-1.5 rounded bg-slate-800 border border-slate-700 text-slate-400">
+                <div className="p-1.5 rounded bg-[#EDF5F1] text-[#258F87]">
                   <Icon className="w-4 h-4" />
                 </div>
               </div>
@@ -71,54 +71,54 @@ export const KpiOverview: React.FC<KpiOverviewProps> = ({
                 <span className={`text-2xl font-bold font-mono ${kpi.textColor}`}>
                   {kpi.value}
                 </span>
-                <span className="text-[11px] text-slate-400 bg-slate-800 px-2 py-0.5 rounded border border-slate-700/60">
+                <span className="text-[11px] text-[#64748B] bg-[#F5F7F4] px-2 py-0.5 rounded border border-[#D9E2DE]">
                   {kpi.badge}
                 </span>
               </div>
-              <p className="text-xs text-slate-400 mt-1.5">{kpi.subtitle}</p>
+              <p className="text-xs text-[#64748B] mt-1.5">{kpi.subtitle}</p>
             </div>
           );
         })}
       </div>
 
       {/* Active Voyage Banner & Quick Action Card */}
-      <div className="rounded-lg border border-slate-800 bg-slate-900 p-5">
+      <div className="rounded-lg border border-[#D9E2DE] bg-white p-5 shadow-sm">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
           <div className="space-y-2.5">
             <div className="flex items-center space-x-2">
-              <span className="text-xs font-semibold uppercase tracking-wide text-teal-400 font-mono">
+              <span className="text-xs font-semibold uppercase tracking-wide text-[#258F87] font-mono">
                 Active Voyage Monitoring
               </span>
-              <span className="text-xs text-slate-400">• Vessel ID: #IN-CT-9042</span>
+              <span className="text-xs text-[#64748B]">• Vessel ID: #IN-CT-9042</span>
             </div>
 
             <div className="flex flex-wrap items-center gap-2.5">
-              <h3 className="text-xl font-bold text-white flex items-center gap-2">
+              <h3 className="text-xl font-bold text-[#16324F] flex items-center gap-2">
                 <span>Mumbai (JNPT)</span>
-                <ArrowRight className="w-4 h-4 text-slate-400" />
+                <ArrowRight className="w-4 h-4 text-[#64748B]" />
                 <span>Singapore</span>
               </h3>
-              <span className="px-2 py-0.5 rounded text-xs font-medium bg-slate-800 text-slate-300 border border-slate-700">
+              <span className="px-2 py-0.5 rounded text-xs font-medium bg-[#EDF5F1] text-[#258F87] border border-[#D9E2DE]">
                 3,200 NM
               </span>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1 text-xs">
-              <div className="bg-slate-800/60 rounded p-2 border border-slate-700/60">
-                <span className="text-slate-400 block text-[11px]">Vessel & Cargo</span>
-                <span className="font-semibold text-slate-200">{currentVoyage.vesselType} ({currentVoyage.cargoLoadPct}%)</span>
+              <div className="bg-[#F8FAF9] rounded p-2 border border-[#D9E2DE]">
+                <span className="text-[#64748B] block text-[11px]">Vessel & Cargo</span>
+                <span className="font-semibold text-[#16324F]">{currentVoyage.vesselType} ({currentVoyage.cargoLoadPct}%)</span>
               </div>
-              <div className="bg-slate-800/60 rounded p-2 border border-slate-700/60">
-                <span className="text-slate-400 block text-[11px]">Current Bunker</span>
-                <span className="font-semibold text-slate-200">{currentVoyage.fuelType} @ {currentVoyage.speedKnots} kts</span>
+              <div className="bg-[#F8FAF9] rounded p-2 border border-[#D9E2DE]">
+                <span className="text-[#64748B] block text-[11px]">Current Bunker</span>
+                <span className="font-semibold text-[#16324F]">{currentVoyage.fuelType} @ {currentVoyage.speedKnots} kts</span>
               </div>
-              <div className="bg-slate-800/60 rounded p-2 border border-slate-700/60">
-                <span className="text-slate-400 block text-[11px]">Baseline CO₂</span>
-                <span className="font-semibold text-slate-200">~312.4 MT CO₂</span>
+              <div className="bg-[#F8FAF9] rounded p-2 border border-[#D9E2DE]">
+                <span className="text-[#64748B] block text-[11px]">Baseline CO₂</span>
+                <span className="font-semibold text-[#16324F]">~312.4 MT CO₂</span>
               </div>
-              <div className="bg-slate-800/60 rounded p-2 border border-slate-700/60">
-                <span className="text-slate-400 block text-[11px]">Baseline ETA</span>
-                <span className="font-semibold text-slate-200">177.8 hrs (7.4 days)</span>
+              <div className="bg-[#F8FAF9] rounded p-2 border border-[#D9E2DE]">
+                <span className="text-[#64748B] block text-[11px]">Baseline ETA</span>
+                <span className="font-semibold text-[#16324F]">177.8 hrs (7.4 days)</span>
               </div>
             </div>
           </div>
@@ -126,7 +126,7 @@ export const KpiOverview: React.FC<KpiOverviewProps> = ({
           <div className="flex flex-col sm:flex-row lg:flex-col gap-2.5 shrink-0">
             <button
               onClick={onOptimizeCurrentVoyage}
-              className="flex items-center justify-center space-x-1.5 px-4 py-2.5 rounded-md bg-teal-600 hover:bg-teal-500 text-white font-semibold text-xs transition-colors shadow-sm"
+              className="flex items-center justify-center space-x-1.5 px-4 py-2.5 rounded-md bg-[#258F87] hover:bg-[#1E746D] text-white font-semibold text-xs transition-colors shadow-sm"
             >
               <Zap className="w-4 h-4 fill-current" />
               <span>Optimize This Voyage</span>
@@ -134,7 +134,7 @@ export const KpiOverview: React.FC<KpiOverviewProps> = ({
 
             <button
               onClick={onNavigateToPrediction}
-              className="flex items-center justify-center space-x-1 px-3 py-2 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs border border-slate-700 transition-colors"
+              className="flex items-center justify-center space-x-1 px-3 py-2 rounded-md bg-white hover:bg-[#F5F7F4] text-[#16324F] text-xs border border-[#D9E2DE] transition-colors"
             >
               <span>Inspect Fuel Prediction Model</span>
               <ArrowRight className="w-3.5 h-3.5" />

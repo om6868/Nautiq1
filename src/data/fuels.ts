@@ -27,7 +27,7 @@ export const FUEL_SPECS: Record<FuelType, FuelSpec> = {
     technologyReadiness: 'Commercial Standard',
     engineCompatibility: 'Universal marine engines without scrubber',
     description: 'Low-sulfur distillate fuel meeting ECA regulations with moderate emissions.',
-    color: '#0284C7' // ocean blue
+    color: '#16324F' // navy
   },
   LNG: {
     id: 'LNG',
@@ -41,7 +41,7 @@ export const FUEL_SPECS: Record<FuelType, FuelSpec> = {
     technologyReadiness: 'Commercial Transition',
     engineCompatibility: 'Dual-fuel cryogenic engine systems',
     description: 'Established transition fuel cutting CO₂ by ~22% and SOx/PM by 99%.',
-    color: '#06B6D4' // cyan
+    color: '#0284C7' // ocean blue
   },
   Methanol: {
     id: 'Methanol',
@@ -55,7 +55,7 @@ export const FUEL_SPECS: Record<FuelType, FuelSpec> = {
     technologyReadiness: 'Commercial Transition',
     engineCompatibility: 'Dual-fuel 2-stroke with low-flashpoint supply',
     description: 'Leading liquid green fuel with drop-in capability and rapid bunkering expansion.',
-    color: '#10B981' // emerald green
+    color: '#258F87' // accent teal
   },
   Hydrogen: {
     id: 'Hydrogen',
@@ -69,7 +69,7 @@ export const FUEL_SPECS: Record<FuelType, FuelSpec> = {
     technologyReadiness: 'Pilot Demonstration',
     engineCompatibility: 'Fuel cell systems or specialized dual-fuel H₂ injection',
     description: 'Zero-carbon molecular carrier with high cryogenic storage complexity.',
-    color: '#8B5CF6' // violet
+    color: '#6366F1' // indigo
   },
   Ammonia: {
     id: 'Ammonia',
@@ -83,7 +83,7 @@ export const FUEL_SPECS: Record<FuelType, FuelSpec> = {
     technologyReadiness: 'Early Scale',
     engineCompatibility: 'Next-generation ammonia 2-stroke engines',
     description: 'Zero-carbon hydrogen carrier requiring strict toxicity management.',
-    color: '#F59E0B' // amber
+    color: '#5B8C72' // soft sage green
   }
 };
 

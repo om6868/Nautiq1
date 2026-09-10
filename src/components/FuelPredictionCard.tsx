@@ -57,22 +57,22 @@ export const FuelPredictionCard: React.FC<FuelPredictionCardProps> = ({
   };
 
   const ciiColors: Record<string, string> = {
-    A: 'bg-emerald-950 text-emerald-300 border-emerald-700/60',
-    B: 'bg-teal-950 text-teal-300 border-teal-700/60',
-    C: 'bg-slate-800 text-slate-300 border-slate-700',
-    D: 'bg-amber-950 text-amber-300 border-amber-700/60',
-    E: 'bg-rose-950 text-rose-300 border-rose-700/60'
+    A: 'bg-[#EDF5F1] text-[#5B8C72] border-[#D9E2DE]',
+    B: 'bg-[#EDF5F1] text-[#258F87] border-[#D9E2DE]',
+    C: 'bg-slate-100 text-slate-700 border-slate-200',
+    D: 'bg-amber-50 text-amber-800 border-amber-200',
+    E: 'bg-rose-50 text-rose-800 border-rose-200'
   };
 
   return (
     <div className="space-y-6">
       {/* Header Banner */}
-      <div className="pb-2 border-b border-slate-800">
-        <h2 className="text-xl font-bold text-white flex items-center gap-2">
-          <Fuel className="w-5 h-5 text-teal-400" />
+      <div className="pb-2 border-b border-[#D9E2DE]">
+        <h2 className="text-xl font-bold text-[#16324F] flex items-center gap-2">
+          <Fuel className="w-5 h-5 text-[#258F87]" />
           <span>Voyage Fuel Prediction</span>
         </h2>
-        <p className="text-xs text-slate-400 mt-0.5">
+        <p className="text-xs text-[#64748B] mt-0.5">
           Deterministic hydrodynamic & energy consumption model.
         </p>
       </div>
@@ -80,25 +80,25 @@ export const FuelPredictionCard: React.FC<FuelPredictionCardProps> = ({
       {/* Main Grid: Input Parameters Form + Prediction Output Cards */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
         {/* Left Column: Voyage Inputs Form (5 cols) */}
-        <div className="lg:col-span-5 bg-slate-900 rounded-lg p-5 border border-slate-800 space-y-4">
-          <div className="flex items-center justify-between pb-2 border-b border-slate-800">
-            <span className="text-xs font-semibold uppercase tracking-wide text-slate-300 flex items-center gap-1.5">
-              <Sliders className="w-3.5 h-3.5 text-teal-400" />
+        <div className="lg:col-span-5 bg-white rounded-lg p-5 border border-[#D9E2DE] shadow-sm space-y-4">
+          <div className="flex items-center justify-between pb-2 border-b border-[#D9E2DE]">
+            <span className="text-xs font-semibold uppercase tracking-wide text-[#16324F] flex items-center gap-1.5">
+              <Sliders className="w-3.5 h-3.5 text-[#258F87]" />
               <span>Voyage & Vessel Parameters</span>
             </span>
           </div>
 
           {/* Validation alert */}
           {validationError && (
-            <div className="p-2.5 rounded bg-rose-950 border border-rose-800 text-rose-200 text-xs flex items-center gap-2">
-              <AlertCircle className="w-4 h-4 shrink-0 text-rose-400" />
+            <div className="p-2.5 rounded bg-rose-50 border border-rose-200 text-rose-800 text-xs flex items-center gap-2">
+              <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
               <span>{validationError}</span>
             </div>
           )}
 
           {/* Vessel Selection */}
           <div>
-            <label className="block text-xs font-medium text-slate-400 mb-1.5">
+            <label className="block text-xs font-medium text-[#64748B] mb-1.5">
               Vessel Type
             </label>
             <div className="grid grid-cols-2 gap-2">
@@ -109,16 +109,16 @@ export const FuelPredictionCard: React.FC<FuelPredictionCardProps> = ({
                   onClick={() => setVoyageInput(prev => ({ ...prev, vesselType: type }))}
                   className={`px-2.5 py-2 rounded-md text-xs font-medium text-left border transition-colors ${
                     voyageInput.vesselType === type
-                      ? 'bg-slate-800 text-teal-300 border-teal-500'
-                      : 'bg-slate-800/50 text-slate-400 border-slate-700 hover:text-slate-300'
+                      ? 'bg-[#EDF5F1] text-[#258F87] border-[#258F87]'
+                      : 'bg-slate-50 text-slate-700 border-[#D9E2DE] hover:bg-slate-100'
                   }`}
                 >
-                  <Ship className={`w-3.5 h-3.5 mb-1 ${voyageInput.vesselType === type ? 'text-teal-400' : 'text-slate-500'}`} />
+                  <Ship className={`w-3.5 h-3.5 mb-1 ${voyageInput.vesselType === type ? 'text-[#258F87]' : 'text-slate-400'}`} />
                   <span className="font-semibold block">{type}</span>
                 </button>
               ))}
             </div>
-            <p className="text-[11px] text-slate-400 mt-1">
+            <p className="text-[11px] text-[#64748B] mt-1">
               Profile: {selectedVessel.name} ({selectedVessel.dwt.toLocaleString()} DWT)
             </p>
           </div>
@@ -126,13 +126,13 @@ export const FuelPredictionCard: React.FC<FuelPredictionCardProps> = ({
           {/* Origin & Destination Ports */}
           <div className="grid grid-cols-2 gap-2.5">
             <div>
-              <label className="block text-xs font-medium text-slate-400 mb-1">
+              <label className="block text-xs font-medium text-[#64748B] mb-1">
                 Origin Port
               </label>
               <select
                 value={voyageInput.originPortId}
                 onChange={(e) => handlePortChange('origin', e.target.value)}
-                className="w-full bg-slate-800 border border-slate-700 rounded-md px-2.5 py-1.5 text-xs text-white focus:border-teal-500 focus:outline-none"
+                className="w-full bg-white border border-[#D9E2DE] rounded-md px-2.5 py-1.5 text-xs text-[#1F2937] focus:border-[#258F87] focus:outline-none"
               >
                 {PORTS.map(port => (
                   <option key={port.id} value={port.id}>
@@ -142,13 +142,13 @@ export const FuelPredictionCard: React.FC<FuelPredictionCardProps> = ({
               </select>
             </div>
             <div>
-              <label className="block text-xs font-medium text-slate-400 mb-1">
+              <label className="block text-xs font-medium text-[#64748B] mb-1">
                 Destination Port
               </label>
               <select
                 value={voyageInput.destPortId}
                 onChange={(e) => handlePortChange('dest', e.target.value)}
-                className="w-full bg-slate-800 border border-slate-700 rounded-md px-2.5 py-1.5 text-xs text-white focus:border-teal-500 focus:outline-none"
+                className="w-full bg-white border border-[#D9E2DE] rounded-md px-2.5 py-1.5 text-xs text-[#1F2937] focus:border-[#258F87] focus:outline-none"
               >
                 {PORTS.map(port => (
                   <option key={port.id} value={port.id}>
@@ -162,10 +162,10 @@ export const FuelPredictionCard: React.FC<FuelPredictionCardProps> = ({
           {/* Distance (NM) */}
           <div>
             <div className="flex justify-between items-center mb-1">
-              <label className="text-xs font-medium text-slate-400">
+              <label className="text-xs font-medium text-[#64748B]">
                 Voyage Distance (NM)
               </label>
-              <span className="text-xs font-mono text-slate-200">
+              <span className="text-xs font-mono text-[#16324F] font-semibold">
                 {voyageInput.distanceNM.toLocaleString()} NM
               </span>
             </div>
@@ -176,17 +176,17 @@ export const FuelPredictionCard: React.FC<FuelPredictionCardProps> = ({
               step={50}
               value={voyageInput.distanceNM}
               onChange={(e) => setVoyageInput(prev => ({ ...prev, distanceNM: Number(e.target.value) }))}
-              className="w-full bg-slate-800 border border-slate-700 rounded-md px-2.5 py-1.5 text-xs text-white font-mono focus:border-teal-500 focus:outline-none"
+              className="w-full bg-white border border-[#D9E2DE] rounded-md px-2.5 py-1.5 text-xs text-[#1F2937] font-mono focus:border-[#258F87] focus:outline-none"
             />
           </div>
 
           {/* Average Speed (knots) Slider */}
           <div>
             <div className="flex justify-between items-center mb-1">
-              <label className="text-xs font-medium text-slate-400">
+              <label className="text-xs font-medium text-[#64748B]">
                 Average Speed
               </label>
-              <span className="text-xs font-mono text-teal-300 font-semibold px-2 py-0.5 rounded bg-slate-800 border border-slate-700">
+              <span className="text-xs font-mono text-[#258F87] font-semibold px-2 py-0.5 rounded bg-[#EDF5F1] border border-[#D9E2DE]">
                 {voyageInput.speedKnots.toFixed(1)} Knots
               </span>
             </div>
@@ -197,17 +197,17 @@ export const FuelPredictionCard: React.FC<FuelPredictionCardProps> = ({
               step={0.5}
               value={voyageInput.speedKnots}
               onChange={(e) => setVoyageInput(prev => ({ ...prev, speedKnots: parseFloat(e.target.value) }))}
-              className="w-full accent-teal-500 bg-slate-800 h-1.5 rounded cursor-pointer"
+              className="w-full accent-[#258F87] bg-slate-200 h-1.5 rounded cursor-pointer"
             />
           </div>
 
           {/* Cargo Load (%) Slider */}
           <div>
             <div className="flex justify-between items-center mb-1">
-              <label className="text-xs font-medium text-slate-400">
+              <label className="text-xs font-medium text-[#64748B]">
                 Cargo Load
               </label>
-              <span className="text-xs font-mono text-slate-200">
+              <span className="text-xs font-mono text-[#16324F]">
                 {voyageInput.cargoLoadPct}%
               </span>
             </div>
@@ -218,13 +218,13 @@ export const FuelPredictionCard: React.FC<FuelPredictionCardProps> = ({
               step={1}
               value={voyageInput.cargoLoadPct}
               onChange={(e) => setVoyageInput(prev => ({ ...prev, cargoLoadPct: parseInt(e.target.value) }))}
-              className="w-full accent-teal-500 bg-slate-800 h-1.5 rounded cursor-pointer"
+              className="w-full accent-[#258F87] bg-slate-200 h-1.5 rounded cursor-pointer"
             />
           </div>
 
           {/* Current Fuel Type Selection */}
           <div>
-            <label className="block text-xs font-medium text-slate-400 mb-1.5">
+            <label className="block text-xs font-medium text-[#64748B] mb-1.5">
               Current Fuel Type
             </label>
             <div className="grid grid-cols-3 gap-1.5">
@@ -237,8 +237,8 @@ export const FuelPredictionCard: React.FC<FuelPredictionCardProps> = ({
                     onClick={() => setVoyageInput(prev => ({ ...prev, fuelType: fuel }))}
                     className={`px-2 py-1.5 rounded-md text-xs font-medium border text-center transition-colors ${
                       isSelected
-                        ? 'bg-slate-800 text-teal-300 border-teal-500'
-                        : 'bg-slate-800/50 text-slate-400 border-slate-700 hover:text-slate-300'
+                        ? 'bg-[#EDF5F1] text-[#258F87] border-[#258F87]'
+                        : 'bg-slate-50 text-slate-700 border-[#D9E2DE] hover:bg-slate-100'
                     }`}
                   >
                     <span className="font-semibold block">{fuel}</span>
@@ -251,7 +251,7 @@ export const FuelPredictionCard: React.FC<FuelPredictionCardProps> = ({
           {/* Primary Predict CTA */}
           <button
             onClick={handlePredict}
-            className="w-full py-2.5 rounded-md bg-teal-600 hover:bg-teal-500 text-white font-semibold text-xs transition-colors flex items-center justify-center space-x-1.5"
+            className="w-full py-2.5 rounded-md bg-[#258F87] hover:bg-[#1E746D] text-white font-semibold text-xs transition-colors flex items-center justify-center space-x-1.5 shadow-sm"
           >
             <Gauge className="w-4 h-4" />
             <span>Predict Fuel Consumption</span>
@@ -263,58 +263,58 @@ export const FuelPredictionCard: React.FC<FuelPredictionCardProps> = ({
           {/* Main 4 Metric Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
             {/* Metric 1: Fuel Consumption */}
-            <div className="rounded-lg bg-slate-900 p-4 border border-slate-800 space-y-1">
+            <div className="rounded-lg bg-white p-4 border border-[#D9E2DE] shadow-sm space-y-1">
               <div className="flex items-center justify-between mb-1">
-                <span className="text-xs text-slate-400 font-medium">
+                <span className="text-xs text-[#64748B] font-medium">
                   Estimated Fuel Consumption
                 </span>
-                <Fuel className="w-4 h-4 text-slate-400" />
+                <Fuel className="w-4 h-4 text-[#258F87]" />
               </div>
               <div className="flex items-baseline space-x-1.5">
-                <span className="text-2xl sm:text-3xl font-bold font-mono text-white">
+                <span className="text-2xl sm:text-3xl font-bold font-mono text-[#16324F]">
                   {prediction.fuelConsumptionTons.toLocaleString()}
                 </span>
-                <span className="text-xs text-slate-400 font-medium">Metric Tons</span>
+                <span className="text-xs text-[#64748B] font-medium">Metric Tons</span>
               </div>
-              <p className="text-xs text-slate-400 pt-1">
-                Rate: <strong className="text-slate-200">{prediction.dailyConsumptionTons} MT/day</strong> ({selectedFuel.name})
+              <p className="text-xs text-[#64748B] pt-1">
+                Rate: <strong className="text-[#16324F]">{prediction.dailyConsumptionTons} MT/day</strong> ({selectedFuel.name})
               </p>
             </div>
 
             {/* Metric 2: Estimated Fuel Cost */}
-            <div className="rounded-lg bg-slate-900 p-4 border border-slate-800 space-y-1">
+            <div className="rounded-lg bg-white p-4 border border-[#D9E2DE] shadow-sm space-y-1">
               <div className="flex items-center justify-between mb-1">
-                <span className="text-xs text-slate-400 font-medium">
+                <span className="text-xs text-[#64748B] font-medium">
                   Estimated Fuel Cost
                 </span>
-                <IndianRupee className="w-4 h-4 text-teal-400" />
+                <IndianRupee className="w-4 h-4 text-[#258F87]" />
               </div>
               <div className="flex items-baseline space-x-1.5">
-                <span className="text-2xl sm:text-3xl font-bold font-mono text-teal-400">
+                <span className="text-2xl sm:text-3xl font-bold font-mono text-[#16324F]">
                   {formatINR(prediction.fuelCostINR)}
                 </span>
               </div>
-              <p className="text-xs text-slate-400 pt-1">
-                Equivalent: <strong className="text-slate-200">{formatUSD(prediction.fuelCostUSD)}</strong> @ ₹{selectedFuel.costPerTonINR.toLocaleString()}/MT
+              <p className="text-xs text-[#64748B] pt-1">
+                Equivalent: <strong className="text-[#16324F]">{formatUSD(prediction.fuelCostUSD)}</strong> @ ₹{selectedFuel.costPerTonINR.toLocaleString()}/MT
               </p>
             </div>
 
             {/* Metric 3: CO2 Emissions */}
-            <div className="rounded-lg bg-slate-900 p-4 border border-slate-800 space-y-1">
+            <div className="rounded-lg bg-white p-4 border border-[#D9E2DE] shadow-sm space-y-1">
               <div className="flex items-center justify-between mb-1">
-                <span className="text-xs text-slate-400 font-medium">
+                <span className="text-xs text-[#64748B] font-medium">
                   Estimated CO₂ Emissions
                 </span>
-                <Leaf className="w-4 h-4 text-teal-400" />
+                <Leaf className="w-4 h-4 text-[#5B8C72]" />
               </div>
               <div className="flex items-baseline space-x-1.5">
-                <span className="text-2xl sm:text-3xl font-bold font-mono text-teal-300">
+                <span className="text-2xl sm:text-3xl font-bold font-mono text-[#16324F]">
                   {prediction.co2EmissionsTons.toLocaleString()}
                 </span>
-                <span className="text-xs text-slate-400 font-medium">MT CO₂e</span>
+                <span className="text-xs text-[#64748B] font-medium">MT CO₂e</span>
               </div>
               <div className="flex items-center justify-between pt-1">
-                <span className="text-xs text-slate-400">
+                <span className="text-xs text-[#64748B]">
                   Factor: {selectedFuel.co2FactorTonPerTon} tCO₂/t
                 </span>
                 <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded border ${ciiColors[prediction.ciiRating]}`}>
@@ -324,39 +324,39 @@ export const FuelPredictionCard: React.FC<FuelPredictionCardProps> = ({
             </div>
 
             {/* Metric 4: Voyage Duration */}
-            <div className="rounded-lg bg-slate-900 p-4 border border-slate-800 space-y-1">
+            <div className="rounded-lg bg-white p-4 border border-[#D9E2DE] shadow-sm space-y-1">
               <div className="flex items-center justify-between mb-1">
-                <span className="text-xs text-slate-400 font-medium">
+                <span className="text-xs text-[#64748B] font-medium">
                   Voyage Duration & ETA
                 </span>
-                <Clock className="w-4 h-4 text-slate-400" />
+                <Clock className="w-4 h-4 text-[#64748B]" />
               </div>
               <div className="flex items-baseline space-x-1.5">
-                <span className="text-2xl sm:text-3xl font-bold font-mono text-slate-100">
+                <span className="text-2xl sm:text-3xl font-bold font-mono text-[#16324F]">
                   {prediction.durationHours}
                 </span>
-                <span className="text-xs text-slate-400 font-medium">Hours</span>
+                <span className="text-xs text-[#64748B] font-medium">Hours</span>
               </div>
-              <p className="text-xs text-slate-400 pt-1">
-                Transit: <strong className="text-slate-200">{prediction.durationDays} days</strong> ({voyageInput.speedKnots} kts)
+              <p className="text-xs text-[#64748B] pt-1">
+                Transit: <strong className="text-[#16324F]">{prediction.durationDays} days</strong> ({voyageInput.speedKnots} kts)
               </p>
             </div>
           </div>
 
           {/* Physics Engine Callout Box */}
-          <div className="rounded-lg bg-slate-900 p-4 border border-slate-800 text-xs space-y-2">
-            <div className="flex items-center space-x-2 text-slate-200 font-semibold">
-              <Info className="w-4 h-4 text-teal-400" />
+          <div className="rounded-lg bg-[#EDF5F1] p-4 border border-[#D9E2DE] text-xs space-y-2">
+            <div className="flex items-center space-x-2 text-[#16324F] font-semibold">
+              <Info className="w-4 h-4 text-[#258F87]" />
               <span>Physics-Informed Model Details</span>
             </div>
-            <p className="text-slate-300 leading-relaxed">
-              Fuel consumption scales non-linearly with speed cubed (<span className="font-mono text-teal-300">P ∝ Δ²/³ · V³·⁰⁵</span>). Cargo displacement and fuel Lower Heating Value (LHV) adjust the required fuel mass.
+            <p className="text-slate-700 leading-relaxed">
+              Fuel consumption scales non-linearly with speed cubed (<span className="font-mono text-[#258F87] font-semibold">P ∝ Δ²/³ · V³·⁰⁵</span>). Cargo displacement and fuel Lower Heating Value (LHV) adjust the required fuel mass.
             </p>
-            <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-800 text-[11px] text-slate-400">
+            <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[#D9E2DE] text-[11px] text-[#64748B]">
               <span>Production uses FlowState Physics-Informed Neural Network (PINN)</span>
               <button
                 onClick={onGoToOptimizer}
-                className="text-teal-400 hover:text-teal-300 font-medium underline"
+                className="text-[#258F87] hover:text-[#1E746D] font-medium underline"
               >
                 Go to Optimizer →
               </button>
