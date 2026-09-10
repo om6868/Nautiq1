@@ -1,0 +1,136 @@
+import React, { useState } from 'react';
+import { Navbar } from './components/Navbar';
+import { KpiOverview } from './components/KpiOverview';
+import { FuelPredictionCard } from './components/FuelPredictionCard';
+import { VoyageOptimizer } from './components/VoyageOptimizer';
+import { FuelScenarioEngine } from './components/FuelScenarioEngine';
+import { FleetAnalytics } from './components/FleetAnalytics';
+import { ImpactFooter } from './components/ImpactFooter';
+import { VoyageInput } from './types';
+import { Sparkles, CheckCircle2, X } from 'lucide-react';
+
+export function App() {
+  const [activeTab, setActiveTab] = useState<string>('dashboard');
+  const [isDemoActive, setIsDemoActive] = useState<boolean>(false);
+  const [showDemoToast, setShowDemoToast] = useState<boolean>(false);
+
+  // Default initial scenario (Mumbai -> Singapore Container Ship)
+  const [voyageInput, setVoyageInput] = useState<VoyageInput>({
+    vesselType: 'Container Ship',
+    originPortId: 'mumbai',
+    destPortId: 'singapore',
+    distanceNM: 3200,
+    speedKnots: 18.0,
+    cargoLoadPct: 82,
+    fuelType: 'HFO'
+  });
+
+  // Demo Mode autofill trigger
+  const handleTriggerDemoMode = () => {
+    setVoyageInput({
+      vesselType: 'Container Ship',
+      originPortId: 'mumbai',
+      destPortId: 'singapore',
+      distanceNM: 3200,
+      speedKnots: 18.0,
+      cargoLoadPct: 82,
+      fuelType: 'HFO'
+    });
+    setIsDemoActive(true);
+    setShowDemoToast(true);
+    setActiveTab('optimizer');
+
+    setTimeout(() => {
+      setShowDemoToast(false);
+    }, 5000);
+  };
+
+  return (
+    <div className="min-h-screen bg-[#070C18] text-slate-100 flex flex-col selection:bg-emerald-500/30 selection:text-emerald-200">
+      {/* Navigation Bar */}
+      <Navbar
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        onTriggerDemoMode={handleTriggerDemoMode}
+        isDemoActive={isDemoActive}
+      />
+
+      {/* Demo Mode Notification Toast */}
+      {showDemoToast && (
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-3">
+          <div className="flex items-center justify-between p-3.5 rounded-xl bg-gradient-to-r from-emerald-950 via-slate-900 to-sky-950 border border-emerald-500/50 shadow-lg animate-fadeIn text-xs text-emerald-200">
+            <div className="flex items-center space-x-2">
+              <Sparkles className="w-4 h-4 text-emerald-400 shrink-0" />
+              <span>
+                <strong>🎯 Demo Scenario Loaded:</strong> Mumbai → Singapore | Container Ship (82% Cargo, 18 kts, HFO). Click <strong>⚡ Optimize My Voyage</strong> below to see quantum recommendations!
+              </span>
+            </div>
+            <button
+              onClick={() => setShowDemoToast(false)}
+              className="p-1 rounded text-slate-400 hover:text-white hover:bg-slate-800"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Main Container */}
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12">
+        {/* Dynamic Tab Content */}
+        {activeTab === 'dashboard' && (
+          <div className="space-y-10">
+            {/* Fleet KPIs & Active Voyage */}
+            <KpiOverview
+              onOptimizeCurrentVoyage={() => setActiveTab('optimizer')}
+              onNavigateToPrediction={() => setActiveTab('prediction')}
+              currentVoyage={voyageInput}
+            />
+
+            {/* Quick-Access Section 1: Voyage Optimizer */}
+            <div className="pt-2">
+              <VoyageOptimizer
+                voyageInput={voyageInput}
+                setVoyageInput={setVoyageInput}
+              />
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'prediction' && (
+          <FuelPredictionCard
+            voyageInput={voyageInput}
+            setVoyageInput={setVoyageInput}
+            onGoToOptimizer={() => setActiveTab('optimizer')}
+          />
+        )}
+
+        {activeTab === 'optimizer' && (
+          <VoyageOptimizer
+            voyageInput={voyageInput}
+            setVoyageInput={setVoyageInput}
+          />
+        )}
+
+        {activeTab === 'scenarios' && (
+          <FuelScenarioEngine
+            voyageInput={voyageInput}
+            setVoyageInput={setVoyageInput}
+            onGoToOptimizer={() => setActiveTab('optimizer')}
+          />
+        )}
+
+        {activeTab === 'analytics' && (
+          <FleetAnalytics
+            voyageInput={voyageInput}
+          />
+        )}
+
+        {/* Global Impact Footer */}
+        <ImpactFooter />
+      </main>
+    </div>
+  );
+}
+
+export default App;
