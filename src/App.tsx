@@ -137,6 +137,11 @@ export function App() {
         {/* Global Impact Footer */}
         <ImpactFooter />
       </main>
+
+      {/* Minimal Footer */}
+      <footer className="py-6 text-center text-xs text-[#64748B]">
+        NautiQ · Developed by Team FlowState
+      </footer>
     </div>
   );
 }
